@@ -27,8 +27,8 @@ export function ProcessSteps() {
           <h2 className="text-3xl font-bold tracking-tight text-slate-900">How relocating with Carlos works</h2>
           <ol className="mt-8 space-y-6">
             {STEPS.map((step, i) => (
-              <li key={step.title} className="flex gap-4">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white">
+              <li key={step.title} className="group flex gap-4 rounded-xl p-2 -m-2 transition-colors duration-200 hover:bg-slate-50">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white transition-transform duration-200 group-hover:scale-110">
                   {i + 1}
                 </span>
                 <div>

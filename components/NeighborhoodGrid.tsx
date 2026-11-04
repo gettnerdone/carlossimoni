@@ -76,8 +76,13 @@ export function NeighborhoodGrid() {
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {NEIGHBORHOODS.map((n) => (
-            <div key={n.name} className="overflow-hidden rounded-xl border border-slate-200 bg-white">
-              <Photo id={n.photoId} className="h-44 w-full" />
+            <div
+              key={n.name}
+              className="group overflow-hidden rounded-xl border border-slate-200 bg-white transition-all duration-200 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg hover:shadow-slate-200/60"
+            >
+              <div className="overflow-hidden">
+                <Photo id={n.photoId} className="h-44 w-full transition-transform duration-300 group-hover:scale-105" />
+              </div>
               <div className="p-5">
                 <h3 className="font-semibold text-slate-900">{n.name}</h3>
                 <p className="mt-1.5 text-sm text-slate-600">{n.blurb}</p>

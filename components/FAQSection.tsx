@@ -74,10 +74,10 @@ export function FAQSection() {
 
         <div className="mt-8 divide-y divide-slate-200 border-y border-slate-200">
           {FAQ_ITEMS.map((item) => (
-            <details key={item.question} className="group py-5">
+            <details key={item.question} className="group py-5 transition-colors duration-200 hover:bg-slate-50 rounded-lg px-2 -mx-2">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-slate-900">
                 {item.question}
-                <span className="shrink-0 text-xl text-slate-400 transition-transform group-open:rotate-45">+</span>
+                <span className="shrink-0 text-xl text-blue-600 transition-transform duration-200 group-open:rotate-45 group-hover:scale-110">+</span>
               </summary>
               <p className="mt-3 text-sm leading-relaxed text-slate-600">{item.answer}</p>
             </details>

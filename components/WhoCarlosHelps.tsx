@@ -39,8 +39,14 @@ export function WhoCarlosHelps() {
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
           {PERSONAS.map((p) => (
-            <div key={p.title} className="flex gap-4 rounded-xl border border-slate-200 bg-white p-6">
-              <p.icon className="h-8 w-8 shrink-0 text-blue-600" strokeWidth={1.75} />
+            <div
+              key={p.title}
+              className="group flex gap-4 rounded-xl border border-slate-200 bg-white p-6 transition-all duration-200 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg hover:shadow-slate-200/60"
+            >
+              <p.icon
+                className="h-8 w-8 shrink-0 text-blue-600 transition-transform duration-200 group-hover:scale-110"
+                strokeWidth={1.75}
+              />
               <div>
                 <h3 className="font-semibold text-slate-900">{p.title}</h3>
                 <p className="mt-1.5 text-sm leading-relaxed text-slate-600">{p.body}</p>

@@ -35,10 +35,11 @@ export function Hero() {
           </p>
 
           <div className="mt-6 flex flex-wrap gap-2">
-            {['Out-of-State Buyers', 'Retirees & Snowbirds', 'Remote Workers', 'Family Relocations'].map((tag) => (
+            {['Out-of-State Buyers', 'Retirees & Snowbirds', 'Remote Workers', 'Family Relocations'].map((tag, i) => (
               <span
                 key={tag}
-                className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white ring-1 ring-inset ring-white/25"
+                style={{ animationDelay: `${i * 100}ms` }}
+                className="animate-chip-in cursor-default rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white ring-1 ring-inset ring-white/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/20 hover:ring-white/40"
               >
                 {tag}
               </span>

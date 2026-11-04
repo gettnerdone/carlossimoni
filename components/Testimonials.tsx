@@ -41,7 +41,10 @@ export function Testimonials() {
 
         <div className="mx-auto mt-10 grid max-w-4xl gap-6 sm:grid-cols-2">
           {TESTIMONIALS.map((t) => (
-            <figure key={t.name} className="rounded-xl border border-slate-200 bg-white p-6">
+            <figure
+              key={t.name}
+              className="rounded-xl border border-slate-200 bg-white p-6 transition-all duration-200 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg hover:shadow-slate-200/60"
+            >
               <Quote className="h-6 w-6 text-blue-400" strokeWidth={2} />
               <blockquote className="mt-3 text-sm leading-relaxed text-slate-700">&ldquo;{t.quote}&rdquo;</blockquote>
               <figcaption className="mt-4 text-sm font-semibold text-slate-900">

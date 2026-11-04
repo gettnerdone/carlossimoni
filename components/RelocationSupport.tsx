@@ -37,8 +37,14 @@ export function RelocationSupport() {
 
         <div className="mt-10 grid gap-8 sm:grid-cols-2">
           {ITEMS.map((item) => (
-            <div key={item.title} className="flex gap-4">
-              <item.icon className="h-7 w-7 shrink-0 text-blue-600" strokeWidth={1.75} />
+            <div
+              key={item.title}
+              className="group flex gap-4 rounded-xl p-3 -m-3 transition-colors duration-200 hover:bg-slate-50"
+            >
+              <item.icon
+                className="h-7 w-7 shrink-0 text-blue-600 transition-transform duration-200 group-hover:scale-110"
+                strokeWidth={1.75}
+              />
               <div>
                 <h3 className="font-semibold text-slate-900">{item.title}</h3>
                 <p className="mt-1.5 text-sm leading-relaxed text-slate-600">{item.body}</p>
@@ -47,7 +53,7 @@ export function RelocationSupport() {
           ))}
         </div>
 
-        <div className="mt-10 rounded-xl border border-blue-100 bg-blue-50 p-6">
+        <div className="mt-10 rounded-xl border border-blue-100 bg-blue-50 p-6 transition-shadow duration-200 hover:shadow-md hover:shadow-blue-100">
           <p className="text-sm leading-relaxed text-slate-700">
             <span className="font-semibold text-slate-900">A real example:</span> I recently helped
             coordinate a relocation to Tampa for a couple, including the husband, who is in his

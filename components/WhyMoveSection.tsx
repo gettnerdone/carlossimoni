@@ -34,8 +34,14 @@ export function WhyMoveSection() {
 
         <div className="mt-10 grid gap-8 md:grid-cols-3">
           {POINTS.map((point) => (
-            <div key={point.title} className="rounded-xl border border-slate-200 p-6">
-              <point.icon className="h-8 w-8 text-blue-600" strokeWidth={1.75} />
+            <div
+              key={point.title}
+              className="group rounded-xl border border-slate-200 p-6 transition-all duration-200 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg hover:shadow-slate-200/60"
+            >
+              <point.icon
+                className="h-8 w-8 text-blue-600 transition-transform duration-200 group-hover:scale-110"
+                strokeWidth={1.75}
+              />
               <h3 className="mt-4 text-lg font-semibold text-slate-900">{point.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">{point.body}</p>
             </div>
