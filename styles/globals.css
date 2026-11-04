@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+/* Tailwind v4 only applies hover styles when the browser reports a
+   hover-capable pointer. Restoring plain :hover so hover states still show
+   up in touch/device-emulation testing. */
+@custom-variant hover (&:hover);
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Keeps anchor-link section jumps (nav, footer) from landing a heading right
+   under the sticky header. */
+section[id] {
+  scroll-margin-top: 5rem;
+}
