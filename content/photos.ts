@@ -24,11 +24,11 @@ export const PHOTOS: Record<string, PhotoSlot> = {
   },
   ogShare: {
     src: '/og-image.jpg',
-    alt: 'Carlos Simoni — Tampa relocation specialist',
+    alt: 'Carlos Simoni, Tampa relocation specialist, with the downtown Tampa skyline behind him',
     width: 1200,
     height: 630,
     brief:
-      'Landscape image used when the site link is shared on social/text/iMessage. Can reuse the hero photo cropped wide, or a Tampa skyline shot with Carlos in frame.',
+      'Landscape image used when the site link is shared on social/text/iMessage. Currently a crop of the hero photo (Carlos on Bayshore with the skyline). Swap if a dedicated shot is taken, but keep his face in it — this is what people see before they click through.',
   },
   neighborhoodSouthTampa: {
     src: '/images/south-tampa.webp',
