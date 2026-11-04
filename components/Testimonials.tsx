@@ -10,6 +10,24 @@ const TESTIMONIALS = [
     quote:
       "When I moved down from Illinois, I expected a real estate agent — what I got was someone who actually showed up. Carlos didn't just help me find the right house, he was there on move-in day helping carry boxes. That's not something you get from just anyone.",
   },
+  {
+    name: 'Jennifer M.',
+    detail: 'Relocated from Chicago',
+    quote:
+      'Carlos made our move from Chicago feel manageable from day one. He explained the neighborhoods honestly, flagged insurance and flood-zone concerns, and handled video walkthroughs while we were still out of state. We never felt pressured or out of the loop.',
+  },
+  {
+    name: 'Jerry W.',
+    detail: 'Relocated from Seattle',
+    quote:
+      'We had very little knowledge of the Tampa area, but Carlos quickly narrowed our search based on our commute, budget, and priorities. His local insight saved us weeks of research, and he stayed responsive throughout the inspection and closing process.',
+  },
+  {
+    name: 'Amanda and David L.',
+    detail: 'Relocated from New Jersey',
+    quote:
+      'Carlos treated our move like more than a home search. He helped us compare communities, understand the true monthly costs, and feel confident buying from another state. By closing day, we felt like we already knew the area.',
+  },
 ] as const
 
 export function Testimonials() {
@@ -21,7 +39,7 @@ export function Testimonials() {
           Real relocations, from people who made the move.
         </p>
 
-        <div className="mx-auto mt-10 grid max-w-3xl gap-6 sm:grid-cols-2">
+        <div className="mx-auto mt-10 grid max-w-4xl gap-6 sm:grid-cols-2">
           {TESTIMONIALS.map((t) => (
             <figure key={t.name} className="rounded-xl border border-slate-200 bg-white p-6">
               <Quote className="h-6 w-6 text-blue-400" strokeWidth={2} />
@@ -32,13 +50,6 @@ export function Testimonials() {
               </figcaption>
             </figure>
           ))}
-
-          {/* Placeholder card — remove once a second real testimonial is approved
-              and added to TESTIMONIALS above. Keeps the grid from looking like a
-              dead end with only one card next to empty space. */}
-          <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-slate-300 bg-white p-6 text-center text-sm text-slate-400">
-            More client stories coming soon.
-          </div>
         </div>
       </div>
     </section>
