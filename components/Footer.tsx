@@ -17,7 +17,9 @@ export function Footer() {
         <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <p className="text-lg font-bold text-white">{SITE.agentName}</p>
-            <p className="mt-1 text-sm">Licensed Real Estate Agent &middot; {SITE.areaServed}</p>
+            <p className="mt-1 text-sm">
+              Licensed Real Estate Agent &middot; {SITE.brokerageName} &middot; {SITE.areaServed}
+            </p>
             <p className="mt-1 text-sm">
               <a href={`tel:${SITE.phoneTel}`} className="hover:text-white">
                 {SITE.phoneDisplay}
@@ -27,11 +29,10 @@ export function Footer() {
                 {SITE.email}
               </a>
             </p>
-            {!SITE.brokerageName && (
+            {!SITE.licenseNumber && (
               <p className="mt-2 max-w-sm text-xs text-amber-400">
-                TODO before launch: Florida requires the supervising brokerage name (and most
-                states require the license number) on real estate advertising — add both to
-                content/site.ts.
+                TODO before launch: most states require the agent&apos;s license number on real
+                estate advertising — add it to content/site.ts.
               </p>
             )}
           </div>
