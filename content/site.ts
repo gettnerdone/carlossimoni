@@ -13,7 +13,7 @@ export const SITE = {
 
   phoneDisplay: '(813) 468-5086',
   phoneTel: '+18134685086', // E.164 format for tel: links
-  email: 'carlos.simoni@preferredshore.com',
+  email: 'carlossimonihomes@gmail.com',
 
   areaServed: 'Tampa Bay, FL',
   domain: 'carlossimoni.com',
