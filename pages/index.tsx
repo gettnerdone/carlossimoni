@@ -4,8 +4,10 @@ import { StickyCallBar } from '@/components/StickyCallBar'
 import { Hero } from '@/components/Hero'
 import { TrustStrip } from '@/components/TrustStrip'
 import { WhyMoveSection } from '@/components/WhyMoveSection'
+import { WhoCarlosHelps } from '@/components/WhoCarlosHelps'
 import { NeighborhoodGrid } from '@/components/NeighborhoodGrid'
 import { ProcessSteps } from '@/components/ProcessSteps'
+import { RelocationSupport } from '@/components/RelocationSupport'
 import { Testimonials } from '@/components/Testimonials'
 import { FAQSection, FAQ_ITEMS } from '@/components/FAQSection'
 import { LeadForm } from '@/components/LeadForm'
@@ -14,7 +16,7 @@ import { SITE } from '@/content/site'
 
 const TITLE = 'Moving to Tampa? Tampa Relocation Specialist | Carlos Simoni'
 const DESCRIPTION =
-  "Relocating to Tampa from out of state? Carlos Simoni is a licensed Tampa Bay real estate agent who specializes in helping out-of-town buyers find the right neighborhood — virtual tours, honest area guidance, no cost to you."
+  "Moving to Florida from out of state? Carlos Simoni is a licensed Tampa Bay real estate agent who helps relocating buyers, retirees, remote workers, and families — including full relocation support for seniors — find the right neighborhood. Virtual tours, honest area guidance, no cost to you."
 
 const faqJsonLd = {
   '@context': 'https://schema.org',
@@ -71,8 +73,10 @@ export default function Home() {
         <Hero />
         <TrustStrip />
         <WhyMoveSection />
+        <WhoCarlosHelps />
         <NeighborhoodGrid />
         <ProcessSteps />
+        <RelocationSupport />
         <Testimonials />
         <FAQSection />
 

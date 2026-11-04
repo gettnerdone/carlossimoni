@@ -18,6 +18,22 @@ export function Hero() {
             helping people relocate here from out of state — the neighborhoods, the flood zones,
             the costs nobody mentions until you&apos;re already here.
           </p>
+          <p className="mt-3 max-w-xl text-slate-600">
+            Whether you&apos;re moving to Florida for a job, retiring to Tampa Bay, or coordinating
+            a parent&apos;s move from out of state, I handle the local side of it from the first
+            call through closing day — not just the paperwork.
+          </p>
+
+          <div className="mt-6 flex flex-wrap gap-2">
+            {['Out-of-State Buyers', 'Retirees & Snowbirds', 'Remote Workers', 'Family Relocations'].map((tag) => (
+              <span
+                key={tag}
+                className="rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-800"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
