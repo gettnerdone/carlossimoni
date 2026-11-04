@@ -83,13 +83,14 @@ export default function Home() {
         <section id="contact" className="bg-slate-50">
           <div className="mx-auto max-w-xl px-4 py-16 sm:px-6">
             <h2 className="text-center text-3xl font-bold tracking-tight text-slate-900">
-              Get your free Tampa relocation guide
+              Ready to talk specifics?
             </h2>
             <p className="mt-3 text-center text-lg text-slate-600">
-              Tell Carlos a bit about your move and he&apos;ll personally follow up.
+              Tell Carlos a bit about your move and he&apos;ll personally follow up — or grab the
+              free guide above if you&apos;re still in research mode.
             </p>
             <div className="mt-8">
-              <LeadForm />
+              <LeadForm source="Bottom inquiry form" />
             </div>
           </div>
         </section>

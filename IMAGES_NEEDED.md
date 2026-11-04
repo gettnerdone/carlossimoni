@@ -6,7 +6,7 @@ make a placeholder disappear — no other code changes needed.
 
 | # | What it's for | What to get | Suggested size |
 |---|---|---|---|
-| 1 | Hero photo (first thing every visitor sees) | Vertical/portrait photo of Carlos, outdoors somewhere recognizably Tampa (skyline, Bayshore, a palm-lined street). Warm and approachable — not a stiff studio headshot. | ~900×1100px |
+| 1 | Hero background (big banner behind the headline + sign-up form) | Wide, landscape shot of a recognizable Tampa Bay scene (skyline, Bayshore Blvd, a palm-lined waterfront). Sits behind a dark overlay with white text on top, so avoid a busy, high-contrast center — open sky/water toward the upper-left reads best. Carlos can be in it but doesn't have to be. | ~1920×1080px |
 | 2 | Social share image | Landscape photo used when the link is shared in texts/social — can reuse the hero shot cropped wide. | 1200×630px |
 | 3 | South Tampa | A recognizable South Tampa street or Bayshore Blvd shot. | ~800×600px |
 | 4 | Westchase | Westchase community entrance, a park, or typical street. | ~800×600px |

@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react'
 import { Loader2, CheckCircle2, Download } from 'lucide-react'
 import { SITE } from '@/content/site'
+import { cn } from '@/lib/cn'
 
 type Status = 'idle' | 'sending' | 'sent' | 'error'
 
@@ -12,9 +13,21 @@ const TIMELINE_OPTIONS = [
   { value: 'researching', label: 'Just researching for now' },
 ]
 
-export function LeadForm() {
+export function LeadForm({
+  variant = 'full',
+  source,
+}: {
+  // 'compact' is the quick name+email guide-download form (hero); 'full' is
+  // the detailed inquiry form (bottom of page) with phone/timeline/message.
+  variant?: 'full' | 'compact'
+  // Tags which form on the page a lead came from, so it shows up in the
+  // notification email — lets Carlos (and later, a real pipeline) tell a
+  // quick guide-download lead apart from someone who filled out the full form.
+  source?: string
+}) {
   const [status, setStatus] = useState<Status>('idle')
   const [errorMsg, setErrorMsg] = useState('')
+  const compact = variant === 'compact'
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -47,11 +60,18 @@ export function LeadForm() {
 
   if (status === 'sent') {
     return (
-      <div className="flex flex-col items-center gap-3 rounded-xl border border-green-200 bg-green-50 p-10 text-center">
+      <div
+        className={cn(
+          'flex flex-col items-center gap-3 rounded-xl border border-green-200 bg-green-50 text-center',
+          compact ? 'p-6' : 'p-10'
+        )}
+      >
         <CheckCircle2 className="h-10 w-10 text-green-600" strokeWidth={1.75} />
         <h3 className="text-lg font-semibold text-slate-900">Got it — thank you!</h3>
         <p className="max-w-sm text-sm text-slate-600">
-          Carlos will reach out shortly. If it&apos;s urgent, just call {SITE.phoneDisplay}.
+          {compact
+            ? 'Your guide is ready below. Carlos will also follow up personally.'
+            : <>Carlos will reach out shortly. If it&apos;s urgent, just call {SITE.phoneDisplay}.</>}
         </p>
         <a
           href="/tampa-relocation-guide.pdf"
@@ -66,7 +86,10 @@ export function LeadForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 rounded-xl border border-slate-200 bg-white p-6 sm:p-8">
+    <form
+      onSubmit={handleSubmit}
+      className={cn('rounded-xl border border-slate-200 bg-white', compact ? 'space-y-3 p-5 sm:p-6' : 'space-y-4 p-6 sm:p-8')}
+    >
       {/* Honeypot field, hidden from real users via CSS, not display:none (some bots skip hidden fields). */}
       <input
         type="text"
@@ -76,42 +99,48 @@ export function LeadForm() {
         className="absolute h-0 w-0 overflow-hidden opacity-0"
         aria-hidden="true"
       />
+      {source && <input type="hidden" name="source" value={source} />}
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className={cn('grid gap-4', !compact && 'sm:grid-cols-2')}>
         <Field label="Name" name="name" required />
         <Field label="Email" name="email" type="email" required />
       </div>
-      <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="Phone (optional)" name="phone" type="tel" />
-        <div>
-          <label htmlFor="timeline" className="mb-1.5 block text-sm font-medium text-slate-700">
-            Timeline
-          </label>
-          <select
-            id="timeline"
-            name="timeline"
-            className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
-          >
-            {TIMELINE_OPTIONS.map((o) => (
-              <option key={o.value} value={o.value}>
-                {o.label}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
-      <Field label="Where are you moving from?" name="movingFrom" placeholder="e.g. Chicago, IL" />
-      <div>
-        <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-slate-700">
-          Anything else? (optional)
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          rows={3}
-          className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
-        />
-      </div>
+
+      {!compact && (
+        <>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Field label="Phone (optional)" name="phone" type="tel" />
+            <div>
+              <label htmlFor="timeline" className="mb-1.5 block text-sm font-medium text-slate-700">
+                Timeline
+              </label>
+              <select
+                id="timeline"
+                name="timeline"
+                className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
+              >
+                {TIMELINE_OPTIONS.map((o) => (
+                  <option key={o.value} value={o.value}>
+                    {o.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+          <Field label="Where are you moving from?" name="movingFrom" placeholder="e.g. Chicago, IL" />
+          <div>
+            <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-slate-700">
+              Anything else? (optional)
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows={3}
+              className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
+            />
+          </div>
+        </>
+      )}
 
       {status === 'error' && <p className="text-sm font-medium text-red-600">{errorMsg}</p>}
 
@@ -121,7 +150,7 @@ export function LeadForm() {
         className="flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-blue-700 disabled:opacity-60"
       >
         {status === 'sending' && <Loader2 className="h-4 w-4 animate-spin" />}
-        {status === 'sending' ? 'Sending…' : 'Send it to Carlos'}
+        {status === 'sending' ? 'Sending…' : compact ? 'Get My Free Guide' : 'Send it to Carlos'}
       </button>
       <p className="text-center text-xs text-slate-500">No cost, no obligation — just a straight answer.</p>
     </form>

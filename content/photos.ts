@@ -14,13 +14,13 @@ export interface PhotoSlot {
 }
 
 export const PHOTOS: Record<string, PhotoSlot> = {
-  heroCarlos: {
+  heroBackground: {
     src: null,
-    alt: 'Carlos Simoni, Tampa relocation real estate agent',
-    width: 900,
-    height: 1100,
+    alt: 'Tampa Bay skyline or waterfront, the site’s hero background',
+    width: 1920,
+    height: 1080,
     brief:
-      'Vertical, waist-up or closer, outdoors somewhere recognizably Tampa (downtown skyline, Bayshore, a palm-lined street). Warm and approachable, not a stiff studio headshot — this is the first thing every visitor sees.',
+      'Big, wide, landscape shot that fills the full-width hero banner behind the headline and sign-up form — a recognizable Tampa Bay scene (downtown skyline, Bayshore Blvd, a palm-lined waterfront). Needs to stay legible under a dark overlay with white text on top, so avoid a busy, high-contrast center; a wide-angle shot with open sky or water toward the upper-left reads best. Can include Carlos in frame, but doesn’t have to.',
   },
   ogShare: {
     src: '/og-image.jpg',

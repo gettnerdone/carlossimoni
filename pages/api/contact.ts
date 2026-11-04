@@ -8,6 +8,7 @@ interface LeadPayload {
   timeline?: string
   movingFrom?: string
   message?: string
+  source?: string
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -26,7 +27,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(400).json({ error: 'Please enter a valid name and email.' })
   }
 
-  const toEmail = process.env.CONTACT_TO_EMAIL || 'carlos.simoni@cmadraft.com'
+  const toEmail = process.env.CONTACT_TO_EMAIL || 'carlossimonihomes@gmail.com'
   const fromEmail = process.env.CONTACT_FROM_EMAIL || 'onboarding@resend.dev'
   const apiKey = process.env.RESEND_API_KEY
 
@@ -37,6 +38,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     body.timeline ? `Timeline: ${body.timeline}` : null,
     body.movingFrom ? `Moving from: ${body.movingFrom}` : null,
     body.message ? `Message: ${body.message}` : null,
+    body.source ? `Source: ${body.source}` : null,
   ].filter(Boolean)
 
   if (!apiKey) {
@@ -52,7 +54,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       from: `Carlos Simoni Website <${fromEmail}>`,
       to: toEmail,
       replyTo: email,
-      subject: `New website lead: ${name}`,
+      subject: `New website lead: ${name}${body.source ? ` (${body.source})` : ''}`,
       text: lines.join('\n'),
     })
     if (error) throw new Error(error.message)
