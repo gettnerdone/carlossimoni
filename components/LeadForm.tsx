@@ -94,7 +94,7 @@ export function LeadForm({
       onSubmit={handleSubmit}
       className={cn(
         'rounded-xl border border-slate-200 bg-white',
-        compact ? 'space-y-2.5 p-4 sm:p-5' : 'space-y-4 p-6 sm:p-8',
+        compact ? 'space-y-2 p-3.5 sm:p-4' : 'space-y-4 p-6 sm:p-8',
         className
       )}
     >
@@ -156,7 +156,10 @@ export function LeadForm({
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-3.5 text-base font-semibold text-white transition-colors hover:bg-blue-700 disabled:opacity-60"
+        className={cn(
+          'flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 text-base font-semibold text-white transition-colors hover:bg-blue-700 disabled:opacity-60',
+          compact ? 'px-6 py-2.5' : 'px-6 py-3.5'
+        )}
       >
         {status === 'sending' && <Loader2 className="h-4 w-4 animate-spin" />}
         {status === 'sending' ? 'Sending…' : compact ? 'Get My Free Guide' : 'Send it to Carlos'}
