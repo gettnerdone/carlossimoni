@@ -94,7 +94,7 @@ export function LeadForm({
       onSubmit={handleSubmit}
       className={cn(
         'rounded-xl border border-slate-200 bg-white',
-        compact ? 'space-y-3 p-5 sm:p-6' : 'space-y-4 p-6 sm:p-8',
+        compact ? 'space-y-2.5 p-4 sm:p-5' : 'space-y-4 p-6 sm:p-8',
         className
       )}
     >
