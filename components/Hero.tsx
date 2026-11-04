@@ -40,7 +40,7 @@ export function Hero() {
         </div>
 
         <div className="mx-auto w-full max-w-sm md:max-w-none">
-          <Photo id="heroCarlos" priority className="w-full rounded-2xl shadow-lg" />
+          <Photo id="heroCarlos" preload className="w-full rounded-2xl shadow-lg" />
         </div>
       </div>
     </section>

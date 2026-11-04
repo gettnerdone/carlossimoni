@@ -54,9 +54,12 @@ export function Footer() {
           )}
         </div>
 
-        <p className="mt-8 border-t border-slate-800 pt-6 text-xs text-slate-500">
-          &copy; {new Date().getFullYear()} {SITE.agentName}. All rights reserved.
-        </p>
+        <div className="mt-8 flex flex-col gap-2 border-t border-slate-800 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+          <p>&copy; {new Date().getFullYear()} {SITE.agentName}. All rights reserved.</p>
+          <a href="/image-credits" className="hover:text-slate-300">
+            Image credits
+          </a>
+        </div>
       </div>
     </footer>
   )
