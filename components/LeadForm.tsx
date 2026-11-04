@@ -16,14 +16,18 @@ const TIMELINE_OPTIONS = [
 export function LeadForm({
   variant = 'full',
   source,
+  className,
 }: {
-  // 'compact' is the quick name+email guide-download form (hero); 'full' is
-  // the detailed inquiry form (bottom of page) with phone/timeline/message.
+  // 'compact' is the quick name+email+phone guide-download form (hero);
+  // 'full' is the detailed inquiry form (bottom of page) with timeline/message.
   variant?: 'full' | 'compact'
   // Tags which form on the page a lead came from, so it shows up in the
   // notification email — lets Carlos (and later, a real pipeline) tell a
   // quick guide-download lead apart from someone who filled out the full form.
   source?: string
+  // Extra classes for the <form> element itself (e.g. shadow/rotation tweaks
+  // when the form is placed over a specific spot in a background photo).
+  className?: string
 }) {
   const [status, setStatus] = useState<Status>('idle')
   const [errorMsg, setErrorMsg] = useState('')
@@ -88,7 +92,11 @@ export function LeadForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className={cn('rounded-xl border border-slate-200 bg-white', compact ? 'space-y-3 p-5 sm:p-6' : 'space-y-4 p-6 sm:p-8')}
+      className={cn(
+        'rounded-xl border border-slate-200 bg-white',
+        compact ? 'space-y-3 p-5 sm:p-6' : 'space-y-4 p-6 sm:p-8',
+        className
+      )}
     >
       {/* Honeypot field, hidden from real users via CSS, not display:none (some bots skip hidden fields). */}
       <input
@@ -104,12 +112,13 @@ export function LeadForm({
       <div className={cn('grid gap-4', !compact && 'sm:grid-cols-2')}>
         <Field label="Name" name="name" required />
         <Field label="Email" name="email" type="email" required />
+        {compact && <Field label="Phone" name="phone" type="tel" required />}
       </div>
 
       {!compact && (
         <>
           <div className="grid gap-4 sm:grid-cols-2">
-            <Field label="Phone (optional)" name="phone" type="tel" />
+            <Field label="Phone" name="phone" type="tel" required />
             <div>
               <label htmlFor="timeline" className="mb-1.5 block text-sm font-medium text-slate-700">
                 Timeline

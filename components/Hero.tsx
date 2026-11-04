@@ -15,7 +15,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/60 to-slate-950/30" />
       </div>
 
-      <div className="mx-auto grid min-h-[600px] max-w-6xl items-center gap-10 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-[1.15fr_0.85fr]">
+      <div className="mx-auto grid min-h-[640px] max-w-6xl items-center gap-10 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:pb-10">
         <div>
           <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-blue-300">
             Tampa Bay Relocation Specialist
@@ -57,10 +57,14 @@ export function Hero() {
         </div>
 
         <div className="mx-auto w-full max-w-sm lg:max-w-none">
-          <p className="mb-2 text-center text-base font-semibold text-white">
+          <p className="mb-2 text-center text-base font-semibold text-white drop-shadow-sm">
             Get the Free Tampa Relocation Guide
           </p>
-          <LeadForm variant="compact" source="Hero guide form" />
+          <LeadForm
+            variant="compact"
+            source="Hero guide form"
+            className="shadow-2xl shadow-black/50 ring-1 ring-black/5 lg:-rotate-1"
+          />
         </div>
       </div>
     </section>
