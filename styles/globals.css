@@ -74,3 +74,33 @@ section[id] {
     animation: none;
   }
 }
+
+/* The hero guide-form card "falls" into place on load with a slight settle,
+   instead of just appearing. */
+@keyframes form-fall-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-90px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(12px);
+  }
+  80% {
+    transform: translateY(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-form-fall-in {
+  animation: form-fall-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) 150ms both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-form-fall-in {
+    animation: none;
+  }
+}

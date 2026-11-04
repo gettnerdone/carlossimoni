@@ -57,7 +57,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="mx-auto w-full max-w-sm lg:max-w-none">
+        <div className="animate-form-fall-in mx-auto w-full max-w-sm lg:max-w-none">
           <p className="mb-2 text-center text-base font-semibold text-white drop-shadow-sm">
             Get the Free Tampa Relocation Guide
           </p>

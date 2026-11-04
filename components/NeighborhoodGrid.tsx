@@ -1,4 +1,5 @@
 import { Photo } from './Photo'
+import { Reveal } from './Reveal'
 import { PHOTOS } from '@/content/photos'
 
 const NEIGHBORHOODS: { photoId: keyof typeof PHOTOS; name: string; blurb: string }[] = [
@@ -74,7 +75,7 @@ export function NeighborhoodGrid() {
           budget, flood risk) and I&apos;ll point you toward the right area, not just the popular one.
         </p>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <Reveal className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {NEIGHBORHOODS.map((n) => (
             <div
               key={n.name}
@@ -89,7 +90,7 @@ export function NeighborhoodGrid() {
               </div>
             </div>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   )

@@ -11,6 +11,7 @@ import { RelocationSupport } from '@/components/RelocationSupport'
 import { Testimonials } from '@/components/Testimonials'
 import { FAQSection, FAQ_ITEMS } from '@/components/FAQSection'
 import { LeadForm } from '@/components/LeadForm'
+import { Reveal } from '@/components/Reveal'
 import { Footer } from '@/components/Footer'
 import { SITE } from '@/content/site'
 
@@ -89,9 +90,9 @@ export default function Home() {
               Tell Carlos a bit about your move and he&apos;ll personally follow up — or grab the
               free guide above if you&apos;re still in research mode.
             </p>
-            <div className="mt-8">
+            <Reveal className="mt-8">
               <LeadForm source="Bottom inquiry form" />
-            </div>
+            </Reveal>
           </div>
         </section>
       </main>

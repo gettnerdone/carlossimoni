@@ -1,4 +1,5 @@
 import { Umbrella, Waves, Receipt } from 'lucide-react'
+import { Reveal } from './Reveal'
 
 const POINTS = [
   {
@@ -32,7 +33,7 @@ export function WhyMoveSection() {
           The stuff I walk every out-of-state client through before they ever make an offer.
         </p>
 
-        <div className="mt-10 grid gap-8 md:grid-cols-3">
+        <Reveal className="mt-10 grid gap-8 md:grid-cols-3">
           {POINTS.map((point) => (
             <div
               key={point.title}
@@ -46,7 +47,7 @@ export function WhyMoveSection() {
               <p className="mt-2 text-sm leading-relaxed text-slate-600">{point.body}</p>
             </div>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   )

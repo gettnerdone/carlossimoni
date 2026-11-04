@@ -1,4 +1,5 @@
 import { Quote } from 'lucide-react'
+import { Reveal } from './Reveal'
 
 // Real clients only — see the standing rule at the bottom of this file.
 // `name` can be a full name or initials depending on what that person
@@ -39,7 +40,7 @@ export function Testimonials() {
           Real relocations, from people who made the move.
         </p>
 
-        <div className="mx-auto mt-10 grid max-w-4xl gap-6 sm:grid-cols-2">
+        <Reveal className="mx-auto mt-10 grid max-w-4xl gap-6 sm:grid-cols-2">
           {TESTIMONIALS.map((t) => (
             <figure
               key={t.name}
@@ -53,7 +54,7 @@ export function Testimonials() {
               </figcaption>
             </figure>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   )
