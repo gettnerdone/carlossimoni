@@ -5,7 +5,7 @@ import { Quote } from 'lucide-react'
 // agreed to; `detail` is the one-line attribution under the quote.
 const TESTIMONIALS = [
   {
-    name: 'Robert Peterson',
+    name: 'Robert P.',
     detail: 'Relocated from Illinois',
     quote:
       "When I moved down from Illinois, I expected a real estate agent — what I got was someone who actually showed up. Carlos didn't just help me find the right house, he was there on move-in day helping carry boxes. That's not something you get from just anyone.",
