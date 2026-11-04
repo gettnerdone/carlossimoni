@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react'
-import { Loader2, CheckCircle2 } from 'lucide-react'
+import { Loader2, CheckCircle2, Download } from 'lucide-react'
 import { SITE } from '@/content/site'
 
 type Status = 'idle' | 'sending' | 'sent' | 'error'
@@ -53,6 +53,14 @@ export function LeadForm() {
         <p className="max-w-sm text-sm text-slate-600">
           Carlos will reach out shortly. If it&apos;s urgent, just call {SITE.phoneDisplay}.
         </p>
+        <a
+          href="/tampa-relocation-guide.pdf"
+          download
+          className="mt-3 flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700"
+        >
+          <Download className="h-4 w-4" strokeWidth={2.5} />
+          Download Your Tampa Relocation Guide
+        </a>
       </div>
     )
   }
