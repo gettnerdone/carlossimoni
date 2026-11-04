@@ -44,6 +44,26 @@ export const FAQ_ITEMS = [
     answer:
       "It depends heavily on where you're coming from and what you're comparing — Florida's lack of state income tax helps, but insurance and some other costs can offset that depending on the property. Rather than quote you a generic number, I'll walk through the real comparison for your specific situation and the specific areas you're considering.",
   },
+  {
+    question: 'Is now a good time to move to Florida?',
+    answer:
+      "There's rarely a single right answer to that — it depends more on your own timeline (job start date, when your current home sells, a lease ending) than on trying to time the market perfectly. What I can tell you honestly is what inventory and pricing look like right now in the specific areas you're considering, so you can make that call with real information instead of a guess.",
+  },
+  {
+    question: 'Do I need a local real estate agent if I already have one back home?',
+    answer:
+      'Yes — Florida real estate has its own rules, paperwork, and local quirks (flood zones, CDD fees, hurricane-related inspections) that an out-of-state agent typically won’t know well. Most agents outside Florida will refer you to a local agent here anyway, since they can’t legally represent you on a Florida transaction. I work with referring agents regularly and keep them in the loop if you’d like.',
+  },
+  {
+    question: 'What about hurricane season and insurance when buying in Florida?',
+    answer:
+      "It's a real factor, not something to brush past. Every property I show out-of-state buyers gets a look at its flood zone and realistic insurance range before we go further, not as a surprise at closing. Hurricane season (June through November) doesn't mean you can't close during it — it just means timing and insurance binding windows need a little more attention, which I handle as part of the process.",
+  },
+  {
+    question: 'How do property taxes work for someone new to Florida?',
+    answer:
+      "Florida has a homestead exemption that can meaningfully lower property taxes on a primary residence once you establish residency, plus a cap on how much your assessed value can increase each year after that. The specifics depend on the county and your situation, so I'll point you to exact numbers for a property you're considering rather than a generic percentage — and recommend a local tax professional for anything beyond the real estate side.",
+  },
 ] as const
 
 export function FAQSection() {
