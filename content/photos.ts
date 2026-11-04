@@ -15,8 +15,8 @@ export interface PhotoSlot {
 
 export const PHOTOS: Record<string, PhotoSlot> = {
   heroBackground: {
-    src: null,
-    alt: 'Tampa Bay skyline or waterfront, the site’s hero background',
+    src: '/images/carlos-tampa-hero.webp',
+    alt: 'Carlos Simoni on Bayshore Boulevard with the downtown Tampa skyline behind him',
     width: 1920,
     height: 1080,
     brief:

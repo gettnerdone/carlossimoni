@@ -30,3 +30,24 @@ body {
 section[id] {
   scroll-margin-top: 5rem;
 }
+
+/* Slow, one-time "Ken Burns" drift on the hero background photo so it reads
+   as alive instead of a static image, without needing multiple photos. */
+@keyframes hero-zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.animate-hero-zoom {
+  animation: hero-zoom 25s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-hero-zoom {
+    animation: none;
+  }
+}

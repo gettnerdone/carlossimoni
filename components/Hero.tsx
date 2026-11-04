@@ -8,8 +8,10 @@ export function Hero() {
     <section id="top" className="relative isolate overflow-hidden border-b border-slate-100">
       {/* Full-bleed background photo, with a dark gradient so white text and
           the form card stay readable over any image dropped into this slot. */}
-      <div className="absolute inset-0 -z-10">
-        <Photo id="heroBackground" fill preload className="h-full w-full" />
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="animate-hero-zoom absolute inset-0">
+          <Photo id="heroBackground" fill preload className="h-full w-full" />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/60 to-slate-950/30" />
       </div>
 
