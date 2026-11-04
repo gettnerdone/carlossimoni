@@ -12,11 +12,17 @@ const ITEMS = [
 
 export function TrustStrip() {
   return (
-    <div className="border-b border-slate-100 bg-white">
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-6 px-4 py-6 sm:px-6 md:grid-cols-4">
+    <div className="relative border-b border-slate-100 bg-white">
+      <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-blue-600 via-sky-400 to-blue-600" />
+      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-5 px-4 py-7 sm:px-6 md:grid-cols-4 md:gap-x-4 md:divide-x md:divide-slate-100">
         {ITEMS.map((item) => (
-          <div key={item.label} className="flex items-center gap-2.5 text-sm font-medium text-slate-700">
-            <item.icon className="h-5 w-5 shrink-0 text-blue-600" strokeWidth={2} />
+          <div
+            key={item.label}
+            className="group flex items-center gap-3 text-sm font-semibold text-slate-800 md:pl-4 md:first:pl-0"
+          >
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600 ring-1 ring-blue-100 transition-colors group-hover:bg-blue-600 group-hover:text-white group-hover:ring-blue-600">
+              <item.icon className="h-5 w-5" strokeWidth={2} />
+            </span>
             <span>{item.label}</span>
           </div>
         ))}
