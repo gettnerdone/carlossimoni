@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "pages/api/admin/vulcan7-sync.ts": {
+      "maxDuration": 300
+    }
+  }
+}
