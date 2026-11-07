@@ -99,6 +99,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const confirmed = cron || req.body?.confirm === true
 
+  // Leads synced before go-live are "older" leads on purpose -- turning
+  // this on shouldn't suddenly fire a day-1 email at the entire existing
+  // backlog at once. Only leads whose Vulcan7 date-added is on/after this
+  // cutoff ever enter the cadence; older ones are left for Carlos to
+  // contact manually if he wants to. Leave OUTREACH_START_DATE unset
+  // while testing dry runs against the current backlog; set it to the
+  // real go-live date (e.g. "2026-11-10") before any real send.
+  const startDate = process.env.OUTREACH_START_DATE || null
+
   const candidates = await query<EligibleLead>(
     `SELECT id, name, email, city, state, outreach_step, last_outreach_sent_at
      FROM carlos_crm.leads
@@ -106,9 +115,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
        AND email_opt_out = false
        AND stage IN ('not_contacted', 'contacted')
        AND outreach_step < $1
+       AND ($3::timestamptz IS NULL OR vulcan7_date_added >= $3::timestamptz)
      ORDER BY vulcan7_date_added ASC NULLS LAST
      LIMIT $2`,
-    [MAX_OUTREACH_STEPS, BATCH_LIMIT],
+    [MAX_OUTREACH_STEPS, BATCH_LIMIT, startDate],
   )
   const leads = candidates.rows.filter((l) => isStepDue(l))
 
