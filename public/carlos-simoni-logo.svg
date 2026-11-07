@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 64" role="img" aria-labelledby="logo-title logo-description">
+  <title id="logo-title">Carlos Simoni</title>
+  <desc id="logo-description">Tampa Relocation Specialist</desc>
+
+  <g transform="translate(2 2)">
+    <path
+      d="M5 27 30 7l25 20"
+      fill="none"
+      stroke="#2563eb"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="5"
+    />
+    <text
+      x="30"
+      y="51"
+      fill="#0f172a"
+      font-family="Arial, Helvetica, sans-serif"
+      font-size="25"
+      font-weight="700"
+      letter-spacing="-2"
+      text-anchor="middle"
+    >CS</text>
+  </g>
+
+  <text
+    x="76"
+    y="29"
+    fill="#0f172a"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="25"
+    font-weight="700"
+    letter-spacing="-0.5"
+  >Carlos Simoni</text>
+  <text
+    x="77"
+    y="51"
+    fill="#2563eb"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="12"
+    font-weight="700"
+    letter-spacing="1.65"
+  >TAMPA RELOCATION SPECIALIST</text>
+</svg>
