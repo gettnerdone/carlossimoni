@@ -40,3 +40,16 @@ export function isAdminRequest(req: NextApiRequest): boolean {
     return false
   }
 }
+
+// Vercel Cron has no admin cookie -- it authenticates by sending this
+// header instead (set CRON_SECRET in the Vercel project's env vars; Vercel
+// adds the header automatically for scheduled invocations).
+export function isCronRequest(req: NextApiRequest): boolean {
+  const secret = process.env.CRON_SECRET
+  const header = req.headers.authorization
+  if (!secret || !header) return false
+  const a = Buffer.from(header)
+  const b = Buffer.from(`Bearer ${secret}`)
+  if (a.length !== b.length) return false
+  return crypto.timingSafeEqual(a, b)
+}

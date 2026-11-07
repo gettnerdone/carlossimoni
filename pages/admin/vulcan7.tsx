@@ -78,12 +78,33 @@ export default function Vulcan7Admin() {
 
   const [actionError, setActionError] = useState('')
 
+  // A dead/restarted dev server, or a dropped connection, can leave a plain
+  // fetch() pending forever with no error and no response -- the spinner
+  // would never clear and there'd be no way to recover short of a page
+  // reload. Every long-running action gets an AbortController timeout so it
+  // always resolves one way or another. The sync route is allowed up to 5
+  // minutes server-side (see vercel.json); give it a bit of headroom.
+  async function fetchWithTimeout(url: string, init: RequestInit, timeoutMs: number) {
+    const controller = new AbortController()
+    const timer = setTimeout(() => controller.abort(), timeoutMs)
+    try {
+      return await fetch(url, { ...init, signal: controller.signal })
+    } catch (err: any) {
+      if (err.name === 'AbortError') {
+        throw new Error('Timed out waiting for a response. Check History below -- it may have finished anyway.')
+      }
+      throw err
+    } finally {
+      clearTimeout(timer)
+    }
+  }
+
   async function runSync() {
     setBusy(true)
     setBusyLabel('Checking Vulcan7 for leads added in the last 3 days…')
     setActionError('')
     try {
-      const res = await fetch('/api/admin/vulcan7-sync', { method: 'POST' })
+      const res = await fetchWithTimeout('/api/admin/vulcan7-sync', { method: 'POST' }, 6 * 60 * 1000)
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Sync failed')
     } catch (err: any) {
@@ -100,7 +121,7 @@ export default function Vulcan7Admin() {
     setBusyLabel('Checking who would get an email (dry run — no emails are sent to leads)…')
     setActionError('')
     try {
-      const res = await fetch('/api/admin/send-outreach', { method: 'POST' })
+      const res = await fetchWithTimeout('/api/admin/send-outreach', { method: 'POST' }, 60 * 1000)
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Dry run failed')
       setDryRunResult(data)
@@ -125,11 +146,11 @@ export default function Vulcan7Admin() {
     setBusyLabel(`Sending to ${dryRunResult.wouldSendCount} lead(s)…`)
     setActionError('')
     try {
-      const res = await fetch('/api/admin/send-outreach', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ confirm: true }),
-      })
+      const res = await fetchWithTimeout(
+        '/api/admin/send-outreach',
+        { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ confirm: true }) },
+        60 * 1000,
+      )
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Send failed')
       setDryRunResult(null)

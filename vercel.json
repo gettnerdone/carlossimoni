@@ -3,5 +3,11 @@
     "pages/api/admin/vulcan7-sync.ts": {
       "maxDuration": 300
     }
-  }
+  },
+  "crons": [
+    {
+      "path": "/api/admin/vulcan7-sync",
+      "schedule": "0 11 * * *"
+    }
+  ]
 }

@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { isAdminRequest } from '@/lib/admin-auth'
+import { isAdminRequest, isCronRequest } from '@/lib/admin-auth'
 import { query } from '@/lib/db'
 import { writeLog } from '@/lib/log'
 import {
@@ -60,8 +60,12 @@ const UPSERT_LEAD_SQL = `
 `
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'POST') return res.status(405).end()
-  if (!isAdminRequest(req)) return res.status(401).json({ error: 'Not signed in' })
+  // The manual "Run daily sync" button POSTs here with the admin cookie.
+  // Vercel Cron GETs this same path on a schedule (see vercel.json) and
+  // authenticates with CRON_SECRET instead, since it has no cookie.
+  const cron = isCronRequest(req)
+  if (req.method !== 'POST' && !(cron && req.method === 'GET')) return res.status(405).end()
+  if (!cron && !isAdminRequest(req)) return res.status(401).json({ error: 'Not signed in' })
 
   const username = process.env.VULCAN7_USERNAME
   const password = process.env.VULCAN7_PASSWORD
